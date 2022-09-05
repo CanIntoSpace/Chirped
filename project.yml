@@ -1,0 +1,21 @@
+options:
+  minimumXcodeGenVersion: 2.32
+  deploymentTarget:
+    iOS: "16.0"
+
+name: Chirped
+
+targets:
+  Chirped:
+    scheme: {}
+    type: application
+    platform: iOS
+    sources: [Chirped]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 13
+        PRODUCT_BUNDLE_IDENTIFIER: space.caninto.chirped
+        INFOPLIST_FILE: "Chirped/Supporting Files/Info.plist"
+        TARGETED_DEVICE_FAMILY: 1
