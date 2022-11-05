@@ -19,3 +19,9 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: space.caninto.chirped
         INFOPLIST_FILE: "Chirped/Supporting Files/Info.plist"
         TARGETED_DEVICE_FAMILY: 1
+    dependencies:
+      - package: Twift
+packages:
+  Twift:
+    github: daneden/Twift
+    from: 0.2.2
