@@ -21,6 +21,9 @@ targets:
         TARGETED_DEVICE_FAMILY: 1
     dependencies:
       - package: Twift
+    preBuildScripts:
+      - name: Secrets
+        script: ./scripts/generate-secrets.sh
 packages:
   Twift:
     github: daneden/Twift
