@@ -5,6 +5,9 @@ options:
 
 name: Chirped
 
+include:
+- targetTemplate.yml
+
 targets:
   Chirped:
     scheme: {}
@@ -21,9 +24,19 @@ targets:
         TARGETED_DEVICE_FAMILY: 1
     dependencies:
       - package: Twift
+      - target: Domain
     preBuildScripts:
       - name: Secrets
         script: ./scripts/generate-secrets.sh
+
+  Domain:
+    templates:
+      - Framework
+    templateAttributes:
+      frameworkName: Domain
+    dependencies:
+      - package: Twift
+
 packages:
   Twift:
     github: daneden/Twift

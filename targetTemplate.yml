@@ -1,0 +1,28 @@
+targetTemplates:
+  Framework:
+    platform: iOS
+    type: framework
+    sources:
+      - ${frameworkName}
+    settings:
+      base:
+        DEVELOPMENT_TEAM: ""
+        PRODUCT_BUNDLE_IDENTIFIER: "space.caninto.chirped.${frameworkName}"
+        INFOPLIST_FILE: "${frameworkName}/Info.plist"
+        TARGETED_DEVICE_FAMILY: 1
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        PROVISIONING_PROFILE: ""
+        PROVISIONING_PROFILE_SPECIFIER: ""
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        ENABLE_BITCODE: NO
+        CLANG_ENABLE_OBJC_WEAK: YES
+      configs:
+        debug:
+          MTL_ENABLE_DEBUG_INFO: YES
+          DEBUG_MODE: YES
+          OTHER_SWIFT_FLAGS: $(inherited) -DDEBUG -DDEV
+        release:
+          MTL_ENABLE_DEBUG_INFO: NO
+          DEBUG_MODE: NO
+          OTHER_SWIFT_FLAGS:  $(inherited) -DAPPSTORE
