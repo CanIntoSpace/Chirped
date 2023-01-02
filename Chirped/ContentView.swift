@@ -16,7 +16,7 @@ struct ContentView: View {
             Form {
                 Section("Examples") {
                     NavigationLink(destination: Users()) { Label("Users", systemImage: "person") }
-                  }
+                }
                 .disabled(!twitterClient.hasUserAuth)
             }
         }

@@ -5,11 +5,11 @@
 //  Created by Michal Nierebinski on 05/09/2022.
 //
 
+import AuthenticationServices
 import CommonUI
 import SwiftUI
 import Twift
 import Utils
-import AuthenticationServices
 
 let clientCredentials = OAuthCredentials(
     key: TWITTER_API_KEY,
@@ -22,13 +22,13 @@ class ClientContainer: ObservableObject {
 }
 
 extension Twift {
-  var hasUserAuth: Bool {
-    switch authenticationType {
-    case .appOnly(_): return false
-    case .userAccessTokens(_, _): return true
-    case .oauth2UserAuth(_, _): return true
+    var hasUserAuth: Bool {
+        switch authenticationType {
+        case .appOnly: return false
+        case .userAccessTokens: return true
+        case .oauth2UserAuth: return true
+        }
     }
-  }
 }
 
 @main
@@ -57,7 +57,8 @@ struct ChirpedApp: App {
                     .navigationTitle("Choose Auth Type")
                     .onAppear {
                         if let keychainItem = container.twiftAccount?.data(using: .utf8),
-                           let decoded = try? JSONDecoder().decode(OAuth2User.self, from: keychainItem) {
+                           let decoded = try? JSONDecoder().decode(OAuth2User.self, from: keychainItem)
+                        {
                             container.client = Twift(oauth2User: decoded, onTokenRefresh: onTokenRefresh)
                         }
                     }

@@ -5,9 +5,9 @@
 //  Created by Michal Nierebinski on 02/01/2023.
 //
 
+import CommonUI
 import SwiftUI
 import Twift
-import CommonUI
 
 struct Users: View {
     @EnvironmentObject var twitterClient: Twift
@@ -22,7 +22,7 @@ struct Users: View {
 }
 
 struct Users_Previews: PreviewProvider {
-  static var previews: some View {
-    Users()
-  }
+    static var previews: some View {
+        Users()
+    }
 }
