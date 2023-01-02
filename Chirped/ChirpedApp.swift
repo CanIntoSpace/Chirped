@@ -21,6 +21,16 @@ class ClientContainer: ObservableObject {
     @KeychainItem(account: "twiftAccount") var twiftAccount
 }
 
+extension Twift {
+  var hasUserAuth: Bool {
+    switch authenticationType {
+    case .appOnly(_): return false
+    case .userAccessTokens(_, _): return true
+    case .oauth2UserAuth(_, _): return true
+    }
+  }
+}
+
 @main
 struct ChirpedApp: App {
     @StateObject var container = ClientContainer()
@@ -57,7 +67,6 @@ struct ChirpedApp: App {
     }
 
     private func onTokenRefresh(_ token: OAuth2User) {
-        print(token)
         guard let encoded = try? JSONEncoder().encode(token) else { return }
         container.twiftAccount = String(data: encoded, encoding: .utf8)
     }

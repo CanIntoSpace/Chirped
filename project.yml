@@ -17,7 +17,7 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: true
-        MARKETING_VERSION: "0.1.0"
+        MARKETING_VERSION: "0.2.0"
         CURRENT_PROJECT_VERSION: 13
         PRODUCT_BUNDLE_IDENTIFIER: space.caninto.chirped
         INFOPLIST_FILE: "Chirped/Supporting Files/Info.plist"
@@ -48,6 +48,8 @@ targets:
       - Framework
     templateAttributes:
       frameworkName: CommonUI
+    dependencies:
+      - package: Twift
 packages:
   Twift:
     github: daneden/Twift
