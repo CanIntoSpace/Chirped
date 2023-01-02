@@ -1,0 +1,56 @@
+options:
+  minimumXcodeGenVersion: 2.32
+  deploymentTarget:
+    iOS: "16.0"
+
+name: Chirped
+
+include:
+- targetTemplate.yml
+
+targets:
+  Chirped:
+    scheme: {}
+    type: application
+    platform: iOS
+    sources: [Chirped]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        MARKETING_VERSION: "0.2.0"
+        CURRENT_PROJECT_VERSION: 13
+        PRODUCT_BUNDLE_IDENTIFIER: space.caninto.chirped
+        INFOPLIST_FILE: "Chirped/Supporting Files/Info.plist"
+        TARGETED_DEVICE_FAMILY: 1
+    dependencies:
+      - package: Twift
+      - target: Domain
+      - target: Utils
+      - target: CommonUI
+    preBuildScripts:
+      - name: Secrets
+        script: ./scripts/generate-secrets.sh
+
+  Domain:
+    templates:
+      - Framework
+    templateAttributes:
+      frameworkName: Domain
+    dependencies:
+      - package: Twift
+  Utils:
+    templates:
+      - Framework
+    templateAttributes:
+      frameworkName: Utils
+  CommonUI:
+    templates:
+      - Framework
+    templateAttributes:
+      frameworkName: CommonUI
+    dependencies:
+      - package: Twift
+packages:
+  Twift:
+    github: daneden/Twift
+    from: 0.2.2

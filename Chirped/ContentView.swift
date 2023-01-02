@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import Twift
 
 struct ContentView: View {
+    @EnvironmentObject var clientContainer: ClientContainer
+    @EnvironmentObject var twitterClient: Twift
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            Form {
+                Section("Examples") {
+                    NavigationLink(destination: Users()) { Label("Users", systemImage: "person") }
+                }
+                .disabled(!twitterClient.hasUserAuth)
+            }
         }
-        .padding()
     }
 }
 
