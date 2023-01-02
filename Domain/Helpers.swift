@@ -13,14 +13,14 @@ public typealias TwitterList = Twift.List
 
 public let allUserFields: Set<Twift.User.Field> = [
     \.createdAt,
-     \.description,
-     \.entities,
-     \.location,
-     \.pinnedTweetId,
-     \.profileImageUrl,
-     \.protected,
-     \.publicMetrics,
-     \.url,
-     \.verified,
-     \.withheld
+    \.description,
+    \.entities,
+    \.location,
+    \.pinnedTweetId,
+    \.profileImageUrl,
+    \.protected,
+    \.publicMetrics,
+    \.url,
+    \.verified,
+    \.withheld,
 ]

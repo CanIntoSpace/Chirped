@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Twift
 
 struct ContentView: View {
+    @EnvironmentObject var clientContainer: ClientContainer
+    @EnvironmentObject var twitterClient: Twift
     var body: some View {
         VStack {
             Image(systemName: "globe")

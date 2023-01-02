@@ -25,6 +25,8 @@ targets:
     dependencies:
       - package: Twift
       - target: Domain
+      - target: Utils
+      - target: CommonUI
     preBuildScripts:
       - name: Secrets
         script: ./scripts/generate-secrets.sh
@@ -36,7 +38,16 @@ targets:
       frameworkName: Domain
     dependencies:
       - package: Twift
-
+  Utils:
+    templates:
+      - Framework
+    templateAttributes:
+      frameworkName: Utils
+  CommonUI:
+    templates:
+      - Framework
+    templateAttributes:
+      frameworkName: CommonUI
 packages:
   Twift:
     github: daneden/Twift
